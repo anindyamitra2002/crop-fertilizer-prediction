@@ -36,7 +36,7 @@ def predict_crop(Nitrogen, Phosphorus, Potassium, pH, Rainfall, Temperature):
     
     # Predict the crop
     crop_prediction = crop_model.predict(crop_input_scaled)
-    return crop_label_encoder[int(crop_prediction[0])]
+    return crop_prediction[0]
 
 def predict_fertilizer(Nitrogen, Phosphorus, Potassium, pH, Rainfall, Temperature, Crop):
     # Prepare the input data and scale it
@@ -62,7 +62,7 @@ def go_to_predictions():
     st.session_state.page = "predictions"
 
 if st.session_state.page == "welcome":
-    st.header("Welcome to the Crop and Fertilizer Prediction App")
+    st.header("Welcome to the Crop and Fertilizer Recommendation App")
     st.write("This app helps you predict the best crop to grow and the optimal fertilizer to use based on specific soil conditions and environmental factors.")
     st.button("Go to Prediction Page", on_click=go_to_predictions)
 
